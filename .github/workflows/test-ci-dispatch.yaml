@@ -11,7 +11,7 @@ on:
         default: 'warning'
       tags:
         description: 'test'  
-  pull-request:
+  pull_request:
 
 jobs:
   test:
