@@ -24,7 +24,7 @@ jobs:
       env:
         KEY4HEP_COMMENT_BOT_TOKEN: ${{ secrets.KEY4HEP_COMMENT_BOT_TOKEN }}
       run: |
-        git fetch pull/${{ github.event.inputs.ref }}/head:testbranch${{ github.event.inputs.ref }}
+        git fetch origin pull/${{ github.event.inputs.ref }}/head:testbranch${{ github.event.inputs.ref }}
         git checkout testbranch${{ github.event.inputs.ref }}
         echo "Tags: ${{ github.event.inputs.ref }}" 
         echo $GITHUB_HEAD_REF
