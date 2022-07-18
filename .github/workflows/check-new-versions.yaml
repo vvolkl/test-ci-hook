@@ -1,0 +1,26 @@
+name: check-new-versions
+
+
+
+on: 
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'test'  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: test dispatch
+      env:
+        KEY4HEP_COMMENT_BOT_TOKEN: ${{ secrets.KEY4HEP_COMMENT_BOT_TOKEN }}
+      run: |
+        echo $GITHUB_HEAD_REF
+        echo $GITHUB_EVENT_PATH
+        cat $GITHUB_EVENT_PATH
