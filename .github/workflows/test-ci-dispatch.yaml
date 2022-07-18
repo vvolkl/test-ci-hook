@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: pull/${{ github.event.inputs.ref }}/head
+        ref: pull/${{ github.event.inputs.ref }}/head:tesbranch${{ github.event.inputs.ref }}
     - name: test dispatch
       env:
         KEY4HEP_COMMENT_BOT_TOKEN: ${{ secrets.KEY4HEP_COMMENT_BOT_TOKEN }}
@@ -29,4 +29,4 @@ jobs:
         echo "Tags: ${{ github.event.inputs.ref }}" 
         echo $GITHUB_HEAD_REF
         echo $GITHUB_EVENT_PATH
-        cat Readme.md
+        cat README.md
