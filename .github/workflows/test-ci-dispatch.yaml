@@ -11,17 +11,22 @@ on:
         default: 'warning'
       tags:
         description: 'test'  
-  pull_request:
+      ref:
+        description: 'test'  
+        default: 'warning'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: pull/${{ github.event.inputs.ref }}/head
     - name: test dispatch
       env:
         KEY4HEP_COMMENT_BOT_TOKEN: ${{ secrets.KEY4HEP_COMMENT_BOT_TOKEN }}
       run: |
+        echo "Tags: ${{ github.event.inputs.ref }}" 
         echo $GITHUB_HEAD_REF
         echo $GITHUB_EVENT_PATH
-        cat $GITHUB_EVENT_PATH
+        cat Readme.md
